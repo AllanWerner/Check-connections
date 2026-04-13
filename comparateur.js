@@ -114,3 +114,25 @@ async function runComparateur() {
 }
 
 runComparateur();
+
+async function compareSameModel(prompt) {
+    const groqConfig = providers.find(p => p.name === 'Groq');
+    const hfConfig = providers.find(p => p.name === 'HuggingFace');
+    
+    const [groqResult, hfResult] = await Promise.all([
+        callProvider(groqConfig, prompt),
+        callProvider(hfConfig, prompt)
+    ]);
+    
+    const ratio = (groqResult.latency / hfResult.latency).toFixed(1);
+    
+    console.log(`\nPrompt: "${prompt}"`);
+    console.log(`Groq (Llama): ${groqResult.latency}ms`);
+    console.log(`HuggingFace (Llama): ${hfResult.latency}ms`);
+    console.log(`Latence: Groq ${ratio}x plus rapide`);
+    console.log(`\nRéponse Groq: ${groqResult.content}`);
+    console.log(`\nRéponse HF: ${hfResult.content}`);
+}
+
+// Tester
+compareSameModel("Explique le machine learning en 2 phrases.");
