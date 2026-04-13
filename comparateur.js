@@ -31,7 +31,6 @@ const prompts = {
     créatif: "Donne une métaphore originale pour expliquer ce qu'est un LLM (Large Language Model) à un enfant de 10 ans.",
     factuel: "Qui a inventé le Transformer en 2017 ? Donne juste les noms des auteurs."
 };
-
 async function callProvider(provider, prompt) {
     const startTime = Date.now();
     
