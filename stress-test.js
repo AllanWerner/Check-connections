@@ -58,10 +58,30 @@ async function runStressTests() {
     ];
     
     console.log(`\nStress test: 10 requêtes parallèles`);
+
+    let totalSuccess = 0, totalFailed = 0;
+    let allLatencies = [];
+
     for (const provider of providers) {
-        await stressTest(provider, 10);
-        await new Promise(resolve => setTimeout(resolve, 2000)); // Pause entre les tests
+        const result = await stressTest(provider, 10);
+        totalSuccess += result.success;
+        totalFailed += result.failed;
+        if (result.avgLatency) allLatencies.push(result.avgLatency);
+        await new Promise(resolve => setTimeout(resolve, 2000));
     }
+
+    const avgLatency = Math.round(allLatencies.reduce((a, b) => a + b, 0) / allLatencies.length);
+    allLatencies.sort((a, b) => a - b);
+    const p95 = allLatencies[Math.floor(allLatencies.length * 0.95)];
+
+    return {
+        success: totalSuccess,
+        total: totalSuccess + totalFailed,
+        avgLatency,
+        p95
+    };
 }
 
 runStressTests();
+
+module.exports = { runStressTests };

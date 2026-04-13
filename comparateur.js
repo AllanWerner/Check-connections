@@ -135,3 +135,5 @@ async function compareSameModel(prompt) {
 
 // Tester
 compareSameModel("Explique le machine learning en 2 phrases.");
+
+module.exports = { callProvider };

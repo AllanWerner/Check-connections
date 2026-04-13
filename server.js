@@ -3,9 +3,31 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Réutiliser les fonctions des phases précédentes
 const {checkProvider}  = require('./check-Connections');
 const { estimateTokens, PRICING } = require('./cost-calculator');
+const {generateDashboard} = require('./generate-dashboard');
+
+const fs = require('fs');
+const path = require('path');
+
+//  le dashboard HTML
+app.get('/dashboard', (req, res) => {
+    const dashboardPath = path.join(__dirname, 'results.html');
+    
+    if (fs.existsSync(dashboardPath)) {
+        res.sendFile(dashboardPath);
+    } else {
+        res.status(404).send('Dashboard not found. Run generate-dashboard.js first.');
+    }
+});
+
+// Route pour générer un nouveau dashboard
+app.get('/generate-dashboard', async (req, res) => {
+    await generateDashboard();
+    res.redirect('/dashboard');
+});
+
+// Réutiliser les fonctions des phases précédentes
 
 app.get('/check', async (req, res) => {
     const providers = [

@@ -33,3 +33,5 @@ function estimateCost(text, label = 'Texte') {
 // Test
 const testText = "Le développement et les nouvelles technologies, je cherche à approfondir mes compétences en ingénierie logicielle tout en contribuant à des projets innovants, dans un environnement stimulant favorisant l’apprentissage et la collaboration.";
 estimateCost(testText, 'Texte de démonstration');
+
+module.exports = { estimateTokens };

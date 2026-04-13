@@ -1,0 +1,83 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>API Connections Dashboard</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+            .container { max-width: 1200px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+            h1 { color: #333; }
+            h2 { color: #666; margin-top: 30px; }
+            table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+            th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+            th { background-color: #4CAF50; color: white; }
+            .ok { color: green; font-weight: bold; }
+            .error { color: red; font-weight: bold; }
+            .warning { color: orange; font-weight: bold; }
+            .metric { font-size: 24px; font-weight: bold; margin: 10px 0; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🔍 API Connections Dashboard</h1>
+
+            <h2>📡 État des connexions</h2>
+            <table>
+                <tr>
+                    <th>Provider</th>
+                    <th>Status</th>
+                    <th>Latence</th>
+                </tr>
+                
+                <tr>
+                    <td>Mistral</td>
+                    <td class="ok">OK</td>
+                    <td>472ms</td>
+                </tr>
+                
+                <tr>
+                    <td>Groq</td>
+                    <td class="ok">OK</td>
+                    <td>196ms</td>
+                </tr>
+                
+                <tr>
+                    <td>HuggingFace</td>
+                    <td class="ok">OK</td>
+                    <td>1391ms</td>
+                </tr>
+                
+            </table>
+
+            <h2>⚡ Stress Test</h2>
+            <div class="metric">Taux de succès: 30/30</div>
+            <div class="metric">Latence moyenne: 601ms</div>
+            <div class="metric">P95: 977.1ms</div>
+
+            <h2>💰 Estimation des coûts (1000 tokens)</h2>
+            <table>
+                <tr>
+                    <th>Provider</th>
+                    <th>Coût par million tokens</th>
+                    <th>Coût pour 1000 tokens</th>
+                </tr>
+                <tr>
+                    <td>Mistral Small</td>
+                    <td>0,20€</td>
+                    <td>0,00020€</td>
+                </tr>
+                <tr>
+                    <td>Groq Llama 3</td>
+                    <td>0,05€</td>
+                    <td>0,00005€</td>
+                </tr>
+                <tr>
+                    <td>GPT-4o</td>
+                    <td>2,50€</td>
+                    <td>0,00250€</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    </html>
+    

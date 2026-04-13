@@ -15,7 +15,7 @@ async function testMultiLanguage() {
         model: 'mistral-small-latest'
     };
     
-    console.log('\n🌍 Test multi-langue\n');
+    console.log('\n🌍 Test multi-langue: Mistral \n');
     console.log('| Langue | Tokens (prompt) | Tokens (Réponse) | Latence |');
     console.log('|--------|----------------|---------|---------|');
     
